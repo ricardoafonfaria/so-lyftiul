@@ -1,0 +1,69 @@
+#!/bin/bash
+PS3='Escolha uma opção: '
+options=("Criar condutor" "Criar passageiros" "Lista negra" "Atualizar condutores" "Stats" "Sair")
+sair=false
+until $sair; do
+	select opt in "${options[@]}"; do
+		case $REPLY in
+			1 ) echo "Número de estudante?"
+				read numero
+				while [ "$(echo $numero | wc -m)" != "6" ] || ! [[ $numero =~ ^-?[0-9]+$ ]]; do
+				echo "Número inválido. Tente outra vez."
+				read numero
+				done
+				echo "Nome?"
+				read nome
+				while [[ $nome =~ [0-9] ]]; do
+                echo "Nome inválido. Tente outra vez."
+                read nome
+                done
+				echo "Turma?"
+				read turma
+				while ! [[ $turma =~ [0-9] ]] || ! [[ $turma =~ [A-Z] ]];do
+                echo "Turma inválida. Tente outra vez."
+                read turma
+                done
+				echo "Número de telemóvel?"
+				read telemovel
+				while [ "$(echo $telemovel | wc -m)" != "10" ] || ! [[ $telemovel =~ ^-?[0-9]+$ ]]; do
+                echo "Número inválido. Tente outra vez."
+                read telemovel
+                done
+				echo "Email?"
+				read email
+				while ! [[ $email =~ @ ]]; do
+                echo "Email inválido. Tente outra vez."
+                read email
+                done
+				echo "Tipo da viatura? (carro ou mota)"
+				read tipo
+				while ! [[ $tipo =~ carro ]] && ! [[ $tipo =~ mota ]]; do
+                echo "Tipo inválido. Tente outra vez."
+                read tipo
+                done
+				echo "Marca de viatura?"
+				read marca
+				echo "Matrícula?"
+				read matricula
+				while ! [[ $matricula =~ -*- ]] || ! [[ $matricula =~ [0-9] ]] || ! [[ $matricula =~ [A-Z] ]]; do
+                echo "Matrícula inválida. Tente outra vez."
+                read matricula
+                done
+				if ! ./cria_condutor.sh $numero "$nome" $turma $telemovel $email $tipo $marca $matricula; then
+				echo "Houve um erro, tente outra vez!"
+				fi
+				break;;
+			2 ) ./cria_passageiros.sh
+				break;;
+			3 ) ./lista_negra.sh
+				break;;
+			4 ) ./atualiza_condutores.sh
+				break;;
+			5 ) ./stats.sh
+				break;;
+			6 ) sair=true
+				break;;
+			*) echo "Opção inválida, tente outra vez!";;
+		esac
+	done
+done

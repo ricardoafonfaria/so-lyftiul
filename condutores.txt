@@ -1,0 +1,5 @@
+88020:Maria Aguiar:EIB2:911555444:mguiar@gmail.com:carro:mercedes:88-TX-11:10:49:28.5
+88110:Vasco Rapido:IB2:962222222:vrapid@gmail.com:mota:BWM:33-MT-99:2:5:4.0
+82039:Miguel Martins:EIB1:911222333:miguelmartins737@gmail.com::::3:27:43
+82897:Ricardo Faria:EIB1:911333444:ricardo_faria99@hotmail.com::::7:28:67
+82980:Ana Contente:ETB1:919828737:anacontente@gmail.com:carro:Mercedes:69-PQ-96:0:0:0
